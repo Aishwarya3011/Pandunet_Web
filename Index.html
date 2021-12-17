@@ -1,0 +1,267 @@
+
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Poiret+One|Teko:600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+        <style>
+            body, html {
+                height: 100%;
+                background-color: #eeeeee;
+            }
+    
+            .parallax {
+                /* The image used */
+                background-image: url('title7.png');
+                object-fit: cover;
+    
+                /* Full height */
+                height: 40%;
+    
+                /* Create the parallax scrolling effect */
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+            a{
+                color: #f2f2f2;
+                text-decoration: none;
+                list-style-type: none;
+            }
+            nav {
+                padding: 0px;
+                text-align: center;
+                position: fixed;
+                margin:-8px;
+                background-color:#333;
+                width: 100%;
+                font-family: 'PT Sans', sans-serif;
+                line-height:65px;
+    
+            }
+            nav > ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: inline-block;
+                background: #333;
+    
+                float: left;
+            }
+            nav > ul > li {
+                float: left;
+                width: 140px;
+                height: 65px;
+                font-size: large;
+                position: relative;
+                text-transform: uppercase;
+                font-size: 17px;
+                color: #f2f2f2;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+            nav > ul > li:hover {
+                background: #888;
+    
+            }
+    
+            ul.drop-menu {
+                position: absolute;
+                top: 100%;
+                left: 0%;
+                width: 100%;
+                padding: 0;
+            }
+            ul.drop-menu li {
+                background: #ababab;
+                color: rgba(255, 255, 255, 0.7);
+            }
+            ul.drop-menu li:hover {
+                background: #606060;
+            }
+            ul.drop-menu li:last-child {
+                border-radius: 0px 0px 5px 5px;
+            }
+    
+            ul.drop-menu li {
+                display: none;
+            }
+    
+            li:hover > ul.drop-menu li {
+                display: block;
+            }
+            #logo{
+                cursor: none;
+                font-size: 40px;
+                float: left;
+                left: 0;
+                padding: -5px;
+                margin-left: -10px;
+                font-family: 'PT Sans', sans-serif;
+                color: #808080;
+            }
+            #logo:hover{
+                background: #333;
+                cursor: default;
+            }
+    
+            #main-heading{
+                margin: 40px;
+                margin-bottom: 15px;
+                margin-left: 10px;
+                padding-bottom: -20px ;
+                font-size: 50px;
+                border-bottom: solid 2.5px darkcyan;
+                font-family: 'Teko', sans-serif;
+                color: #333333;
+    
+            }
+            .content{
+                font-family: 'Roboto Condensed', sans-serif;
+                font-size: 20px;
+    
+                margin: 20px; margin-left: 15px;
+            }
+    
+            .sub-heading{
+                margin: 20px;
+                margin-left: 15px;
+                font-family: 'Roboto Condensed',sans-serif;
+                font-size: 30px;
+                color: #ff5f2a;
+            }
+            .special{
+                color:#efefef; background-color: #444; display: inline; border: solid #38a8d1 2px;padding: 3px;
+            }
+
+            .floatRight{
+                float: right;
+            }
+
+            .link-color{
+                color: #0000FF;
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="Navigation Container">
+            <section>
+                <ul>
+                    <a id="logo">
+                        CS 269 Group Project - Team 10
+                    </a>
+                </ul> 
+            </section>
+            <ul class="floatRight"> 
+                <li>
+                    <a href="#team">Team Details</a>   
+                </li>
+                <li>
+                    <a href="#abstract">Abstract</a>   
+                </li>
+                <li>
+                    <a href="#images">Images</a>   
+                </li>
+                <li>
+                    <a href="#paper">Paper</a>   
+                </li>
+                <li>
+                    <a href="#result">Results</a>   
+                </li>
+                <li>
+                    <a href="#video">Video</a>   
+                </li>
+                <li>
+                    <a href="#appendix">Appendix</a>   
+                </li>
+            </ul>
+        </nav>
+        <div class="parallax"></div>
+    
+        <div id="team" class="subjects">
+            <div id="main-heading">TEAM 10 DETAILS</div>
+            <div class="content">
+                <ul>
+                    <li>Abirami Anbumani
+                        (005526158)
+                    </li>
+                    <li>Aishwarya Dev
+                        (305515097)
+                    </li>
+                    <li>Harini Suresh
+                        (505712718)
+                    </li>
+                    <li>Harshita Khandelwal
+                        (905526234)
+                    </li>
+                    <li>Shardul Parab
+                        (205525006)
+                    </li>             
+                </ul>
+            </div>
+        </div>
+
+        <div id="abstract" class="subjects">
+            <div id="main-heading">ABSTRACT</div>
+            <div class="content">
+                <p>
+                    Object detection is extensively performed by Convolutional Neural networks(CNN)
+                    and their variations. MobileNet is one lightweight deep learning-based single
+                    shot detector with embedded vision applications. CNNs are inherently limited
+                    to model geometric transformations due to the fixed geometric structures in their
+                    building modules. Deformable models strengthen this transformation capacity
+                    by embedding object information into the system. In this paper, we describe
+                    our work titled ’PanduNet,’ a Deformable Convolutions incorporated MobileNet
+                    with application in Pedestrian Detection. We have compared and summarized the
+                    results of traditional MobileNet and PanduNet for the same. Furthermore, we have
+                    summarized our work on pedestrian tracking using PanduNet.
+                </p>
+            </div>
+        </div>
+
+        <div id="images" class="subjects">
+            <div id="main-heading">IMAGES</div>
+            <div class="content">
+                
+            </div>
+        </div>
+
+        <div id="paper" class="subjects">
+            <div id="main-heading">PAPER</div>
+            <div class="content">
+                Link to the can be found 
+                <a class="link-color" href="https://www.overleaf.com/project/61b91651bd513eb374c5272c">here</a>
+            </div>
+        </div>
+
+        <div id="results" class="subjects">
+            <div id="main-heading">RESULTS</div>
+            <div class="content">
+                
+            </div>
+        </div>
+
+        <div id="video" class="subjects">
+            <div id="main-heading">VIDEO</div>
+            <div class="content">
+                
+            </div>
+        </div>
+
+        <div id="appendix" class="subjects">
+            <div id="main-heading">APPENDIX</div>
+            <div class="content">
+                
+            </div>
+        </div>
+        <br>
+        <br>
+        </div>
+    </body>
+</html>
