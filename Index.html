@@ -147,6 +147,7 @@
             .link-color{
                 color: #0000FF;
             }
+
         </style>
     </head>
     <body>
@@ -240,10 +241,109 @@
             </div>
         </div>
 
-        <div id="results" class="subjects">
+        <div id="result" class="subjects">
             <div id="main-heading">RESULTS</div>
             <div class="content">
-                
+                <p>
+                    The experiments are based on a comparative study between a mobilenet SSD model (without any
+                    deformable convolutional units) and the PanduNet model which promises to produce much better
+                    results if allowed to train for the entire run i.e. 200 epochs. As explained previously, we do add
+                    and alter the base Mobilnet SSD model by adding deformable convolution units in all the extra
+                    layers after the mobilenet model. Currently, we set out to train both the models using the transfer
+                    learning approach by freezing the Mobilnet[1] Architecture trained on Imagenet dataset[2]. In ideal
+                    conditions, the expected training schedule should include using a batch size of 32 for 200 epochs
+                    using a cosine scheduler with an initial learning rate of 0.01. However, due to the current lack of
+                    resources we have to have done our comparative study on a highly pessimistic training plan, training
+                    for 23 epochs on the Pascal VOC dataset for both the base Mobilenet SSD and Pandunet using 1500
+                    data points for training and 300 images for testing with a batch size of 4(cannot exceed the batch size
+                    4 due to memory constraints). The training is completed on a 4GB 1050Ti NVIDIA GPU and the
+                    codebase is majorly written using the Pytorch framework in Python.
+                    <br>
+                    As described in the Mobilenet paper, we will use the essential data augmentation steps in order to
+                    avoid any gaps in the training process. The paper states the following steps:
+                    – Use the entire original input image.
+                    – Sample a patch so that the minimum jaccard overlap with the objects is 0.1, 0.3, 0.5, 0.7, or 0.9.
+                    – Randomly sample a patch.
+                    <br>
+                    We will do a comparative study on the following factors:
+                    <ul>
+                        <li>Accuracy comparison using MAP on the PASCAL VOC dataset.</li>
+                        <li>Accuracy comparison with pedestrians at different size scales i.e. small, medium and large.</li>
+                        <li>Visual Study for objects with different orientations.</li>
+                        <li>Visual study of handling occlusions.</li>
+                    </ul>
+                </p>
+                <br>
+                <ol>
+                    <li>
+                        <strong>
+                            Mean Average Precision
+                        </strong>
+                    </li>
+                    <br>
+                    Precision and recall are single-value measurements based on the system’s entire list of documents
+                    returned. It is desirable to consider the order in which the returned documents are presented when
+                    using systems that return a rated sequence of documents. One can create a precision-recall curve by
+                    computing precision and recall at each location in the ranking sequence of documents and graphing
+                    precision p(r) as a function of recall r. The average value of p(r) for the range of r = 0 to r = 1 is
+                    computed using average precision:
+                    <br>
+                    <br>
+                    <math>
+                        A<sub>ve</sub>P =  ∫<sub>0</sub><sup>1</sup> p(r) dr
+                    </math>
+                    <br>
+                    <br>
+                    <br>
+                    Mean average precision (MAP) for a set of queries is the mean of the average precision scores for
+                    each query.
+                    <br>
+                    <br>
+                    <math>
+                        MAP = ( ∑<sub>q=1</sub>Q A<sub>ve</sub>P(q) )/Q
+                    </math>
+                    <br>
+                    <br>
+                    <br>
+                    <li>
+                        <strong>
+                            Results on PASCAL VOC Dataset
+                        </strong>                        
+                    </li>
+                    <br>
+                    As stated previously, we are using a subset of the Pascal VOC dataset using 1500 data points and 300 images. The metric used for the following is the Mean Average Precision. In the current case after 23 epochs the MAP score of the base mobilenet SSD model is 32.39 whereas for our Pandunet we get an MAP of 43.59 at only 23 epochs which is a huge improvement. This also shows that our model has a tendency to converge much earlier and in a much more accurate manner. Lastly, we predict that if we had more resources and time, the model would have definitely shown a vast improvement over the previously existing MobileNet SSD.
+                    <br>
+                    <br>
+                    <br>
+                    <li>
+                        <strong>
+                            Results on Accuracy comparison with pedestrians at different size scales i.e. small, medium and large.                       
+                        </strong> 
+                    </li>
+                    <br>
+                    The MAP score is an indication of the entire dataset but does not give an idea about the minute details. So we have also conducted a study on pedestrians of different sizes i.e. small, medium, large, etc. It could be a case that the model could become biased to only images of a particular size and it can definitely help in dissecting the model for further improvements. For this case we use the COCO dataset and compare small, medium and large. These Average Precision Scales are strictly predefined as objects smaller than 32x32 to greater than 96x96 pixels. The results of the same are as follows: small - mobilenetSSD is 25.32 and Pandunet is 33.42. For medium scaled images - mobilenetSSD is 28.66 and Pandunet is 33.96. However, for large scaled humans in the dataset, mobilenetSSD scores 27.33 and Pandunet scores 27.12. So in the majority of cases, Pandunet outscores mobilenetSSD and can be generalized for pedestrian detection. Additionally, it is expected that for pedestrians the small and medium sized humans would be the case in general and large sized cases would be rare. Although in the future, it needs to be seen as to why large objects are not giving optimal performance with Pandunet.
+                    <br>
+                    <br>
+                    <br>
+                    <li>
+                        <strong>
+                            Visual Study for handling objects with different orientations:
+                        </strong> 
+                    </li>
+                    <br>
+                    As per the paper on Deformable Convolutions, it is expected that the detector using Deform Convolutions should work with objects at different orientations and give consistent results for the same. To test this hypothesis, we run our model on images with different orientations and test how well the model performs. Based on testing a  few detectors such as Yolov1, mobilenet-SSD It is evident that object detectors are in general not actually trained for this scenario. However, upon evaluating the performance of PanduNet on a very small dataset prepared by the team by rotating images, we have observed a positive performance. This does present optimism that the model can give really good results upon complete training.
+                    <br>
+                    <br>
+                    <br>
+                    <li>
+                        <strong>
+                            Visual study of handling occlusions:
+                        </strong> 
+                    </li>
+                    <br>
+                    Detection of occluded pedestrians is a big issue that needs to be solved for consistent detection as well as tracking. The salient features of deformable convolutions does provide a reason to believe that PanduNet can handle occlusions too to a considerable extent. We present a few useful cases where PaduNet has successfully managed to provide positive results of occluded/hidden pedestrians. This is also a positive outcome wherein upon complete training, Pandunet can also help in providing consistent trackers and help develop consistent and robust detectors in the long term.
+                    <br>
+                </ol>
             </div>
         </div>
 
