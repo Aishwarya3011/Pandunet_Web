@@ -248,7 +248,7 @@
                     <a href="#video">Video</a>   
                 </li>
                 <li>
-                    <a href="#appendix">Appendix</a>   
+                    <a href="#code">Code</a>   
                 </li>
             </ul>
         </nav>
@@ -337,36 +337,6 @@
                 </p>
                 <br>
                 <ol>
-                    <li>
-                        <strong>
-                            Mean Average Precision
-                        </strong>
-                    </li>
-                    <br>
-                    Precision and recall are single-value measurements based on the system’s entire list of documents
-                    returned. It is desirable to consider the order in which the returned documents are presented when
-                    using systems that return a rated sequence of documents. One can create a precision-recall curve by
-                    computing precision and recall at each location in the ranking sequence of documents and graphing
-                    precision p(r) as a function of recall r. The average value of p(r) for the range of r = 0 to r = 1 is
-                    computed using average precision:
-                    <br>
-                    <br>
-                    <math>
-                        A<sub>ve</sub>P =  ∫<sub>0</sub><sup>1</sup> p(r) dr
-                    </math>
-                    <br>
-                    <br>
-                    <br>
-                    Mean average precision (MAP) for a set of queries is the mean of the average precision scores for
-                    each query.
-                    <br>
-                    <br>
-                    <math>
-                        MAP = ( ∑<sub>q=1</sub>Q A<sub>ve</sub>P(q) )/Q
-                    </math>
-                    <br>
-                    <br>
-                    <br>
                     <li>
                         <strong>
                             Results on PASCAL VOC Dataset
@@ -492,12 +462,20 @@
             </div>
         </div>
 
-        <div id="appendix" class="subjects">
-            <div id="main-heading">APPENDIX</div>
+        <div id="code" class="subjects">
+            <div id="main-heading">CODE</div>
             <div class="content">
-                
+                <a class="link-color" href="pandunet_codebase.zip">Link </a> to source code and executable.
+                <br>
+                <p>Command for running the codebase is as follows:
+                    <ol>
+                        <li>cd pandunet_codebase/pytorch-ssd</li>
+                        <li>python3 run_ssd_live_demo.py pandunet-model models/pandunet_model.pth models/voc-model-labels.txt</li>
+                    </ol>
+                </p>
             </div>
         </div>
+        <hr>
         <br>
         <br>
         </div>
