@@ -11,10 +11,37 @@
                 height: 100%;
                 background-color: #eeeeee;
             }
-    
+
+            @media screen and (max-width: 500px) {
+                .column {
+                  width: 100%;
+                }
+            } 
+
+            .row {
+                display: flex;
+            }
+              
+            .column {
+                flex: 33.33%;
+                padding: 5px;
+            }
+
+            .column {
+                float: left;
+                width: 33.33%;
+                padding: 5px;
+            }
+              
+            .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+  
             .parallax {
                 /* The image used */
-                background-image: url('title.png');
+                background-image: url('images/title.png');
                 object-fit: cover;
     
                 /* Full height */
@@ -148,6 +175,39 @@
                 color: #0000FF;
             }
 
+            * {box-sizing: border-box}
+
+            .container {
+            width: 100%;
+            position: relative;
+            max-width: 100%;%
+            }
+
+            .image {
+            display: block;
+            width: 100%;
+            height: auto;
+            }
+
+            .overlay {
+            position: relative;
+            bottom: 0;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.5); /* Black see-through */
+            color: #f1f1f1;
+            width: 100%;
+            transition: .5s ease;
+            opacity:0;
+            color: white;
+            font-size: 20px;
+            padding: 20px;
+            text-align: center;
+            }
+
+            .container:hover .overlay {
+            opacity: 1;
+            }
+
         </style>
     </head>
     <body>
@@ -203,7 +263,7 @@
                     </li>
                     <li>Harshita Khandelwal
                         (905526234)
-                    </li>            
+                    </li>              
                 </ul>
             </div>
         </div>
@@ -229,7 +289,70 @@
         <div id="images" class="subjects">
             <div id="main-heading">IMAGES</div>
             <div class="content">
-                
+                <div class="row">
+                    <div class="column container">
+                      <img src="images/voc_ssd.jpeg" alt="SSD ON VOC" style="width:100%">
+                      <div class="overlay">Results for SSD</div>
+                    </div>
+                    <div class="column container">
+                      <img src="images/voc_pandu.jpeg" alt="PANDU on VOC" style="width:100%">
+                      <div class="overlay">Results for Pandunet</div>
+                    </div>
+                    <div class="column container">
+                        <img src="images/image (2).png" alt="SSD ON VOC" style="width:100%">
+                        <div class="overlay">Results for SSD</div>
+                    </div>
+                    <div class="column container">
+                        <img src="images/image (1).png" alt="PANDU on VOC" style="width:100%">
+                        <div class="overlay">Results for Pandunet</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column container">
+                      <img src="images/near_ssd.png" alt="SSD" style="width:100%">
+                      <div class="overlay">Results for SSD</div>
+                    </div>
+                    <div class="column container">
+                      <img src="images/near_pandu.png" alt="PANDU" style="width:100%">
+                      <div class="overlay">Results for Pandunet</div>
+                    </div>
+                    <div class="column container">
+                        <img src="images/far_ssd.png" alt="SSD ON VOC" style="width:100%">
+                        <div class="overlay">Results for SSD</div>
+                    </div>
+                    <div class="column container">
+                        <img src="images/far_pandu.png" alt="PANDU on VOC" style="width:100%">
+                        <div class="overlay">Results for Pandunet</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column container">
+                      <img src="images/pas_ssd.png" alt="SSD" style="width:100%">
+                      <div class="overlay">Results for SSD</div>
+                    </div>
+                    <div class="column container">
+                      <img src="images/pas_pandu.png" alt="PANDU" style="width:100%">
+                      <div class="overlay">Results for Pandunet</div>
+                    </div>
+                    <div class="column container">
+                        <img src="images/pass_ssd.png" alt="SSD ON VOC" style="width:100%">
+                        <div class="overlay">Results for SSD</div>
+                    </div>
+                    <div class="column container">
+                        <img src="images/pass_pandu.png" alt="PANDU on VOC" style="width:100%">
+                        <div class="overlay">Results for Pandunet</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column container">
+                      <img src="images/medium_ssd.png" alt="SSD" style="width:100%">
+                      <div class="overlay">Results for SSD</div>
+                    </div>
+                    <div class="column container">
+                      <img src="images/medium_pandu.png" alt="PANDU" style="width:100%">
+                      <div class="overlay">Results for Pandunet</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -237,7 +360,7 @@
             <div id="main-heading">PAPER</div>
             <div class="content">
                 Link to the can be found 
-                <a class="link-color" href="https://www.overleaf.com/project/61b91651bd513eb374c5272c">here</a>
+                <a class="link-color" href="CS_269_Project_Paper_T10.pdf">here</a>
             </div>
         </div>
 
@@ -350,7 +473,13 @@
         <div id="video" class="subjects">
             <div id="main-heading">VIDEO</div>
             <div class="content">
-                
+                <video width=50% height="50%" controls>
+                    <source src="videos/Pandunet_Result_Video.mp4" type="video/mp4">
+                    <source src="videos/Pandunet_Result_Video.mp4" type="video/ogg"> 
+                </video>
+            </div>
+            <div class="content">
+                <p>Currently the model will detect limited people as stated in our report/paper due to limited training.<br> With further extensive trainng, it is expected that the results shall improve and become much better.</p>
             </div>
         </div>
 
